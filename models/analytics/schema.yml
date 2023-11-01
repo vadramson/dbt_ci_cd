@@ -20,19 +20,27 @@ models:
                 - unique
                 - not_null
 
-
-
-    - name: ALTC_BRAND
-      description: "A dbt model that creates ALTC_BRAND table from the Brand table"
+    - name: ALTC_CUSTOMER_DEMOGRAPHIC
+      description: "A dbt model that creates KPI aggregation table to monitor Customer Demographics"
       columns:
-          - name: BRANDID
+          - name: CUSTOMERID
             description: "The primary key for this table"
-            
+            tests:
+                - unique
+                - not_null
 
-    - name: ALTC_CITY
-      description: "A dbt model that creates INCR_CITY table from the City table"
+    - name: ALTC_CUSTOMER_DEMOGRAPHIC_PRODUCTS
+      description: "A dbt model that creates KPI aggregation table to monitor Customer Demographics"
       columns:
-          - name: CITYID
+          - name: CUSTOMERID
             description: "The primary key for this table"
-            
-  
+            tests:
+                - unique
+                - not_null 
+
+    - name: ALTC_CITY_WISE_ANALYSIS
+      description: "A dbt model that creates KPI aggregation VIEW to monitor Customer Demographics by city"
+      columns:
+          - name: CUSTOMERID
+            description: "The primary key for this table"
+                       
