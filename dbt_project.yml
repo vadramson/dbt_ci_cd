@@ -41,4 +41,10 @@ models:
     incr:
       +materialized: table # Create a table for all transformations in this model
       +schema: INC_LAYER # Use this schema for all transformations in this model
+    # Applies to all files under models/analytics/  
+    analytics:
+      +materialized: table # Create a table for all transformations in this model
+      +schema: ANALYTICS_LAYER # Use this schema for all transformations in this model
+
+      
    
