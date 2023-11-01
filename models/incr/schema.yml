@@ -1,0 +1,48 @@
+version: 2
+
+models:
+    - name: INCR_CUSTOMER
+      description: "A dbt model that creates INCR_CUSTOMER table from the Customer table"
+      columns:
+          - name: CUSTOMERID
+            description: "The primary key for this table"
+            
+            
+
+    - name: INCR_PRODUCT
+      description: "A dbt model that creates INCR_PRODUCT table from the Product table"
+      columns:
+          - name: PRODUCTID
+            description: "The primary key for this table"
+            
+                
+    - name: INCR_BRAND
+      description: "A dbt model that creates INCR_BRAND table from the Brand table"
+      columns:
+          - name: BRANDID
+            description: "The primary key for this table"
+            
+
+    - name: INCR_CITY
+      description: "A dbt model that creates INCR_CITY table from the City table"
+      columns:
+          - name: CITYID
+            description: "The primary key for this table"
+            
+        
+    - name: INCR_COUNTRY
+      description: "A dbt model that creates INCR_COUNTRY table from the Country table"
+      columns:
+          - name: COUNTRYID
+            description: "The primary key for this table"
+            
+    
+    - name: INCR_SALES
+      description: "A dbt model that creates INCR_SALES table from the Sales table"
+      columns:
+          - name: SALEID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
