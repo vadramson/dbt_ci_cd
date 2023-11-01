@@ -1,0 +1,46 @@
+version: 2
+
+models:
+    - name: ALTC_SALES_BRANDS
+      description: "A dbt model that creates KPI aggregation table to monitor Sales across Brands"
+      columns:
+          - name: BRANDID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+            
+            
+    - name: ALTC_PRODUCT_PROFITABILITY
+      description: "A dbt model that creates KPI aggregation table to monitor Product profitability"
+      columns:
+          - name: PRODUCTID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: ALTC_CUSTOMER_DEMOGRAPHIC
+      description: "A dbt model that creates KPI aggregation table to monitor Customer Demographics"
+      columns:
+          - name: CUSTOMERID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: ALTC_CUSTOMER_DEMOGRAPHIC_PRODUCTS
+      description: "A dbt model that creates KPI aggregation table to monitor Customer Demographics"
+      columns:
+          - name: CUSTOMERID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null 
+
+    - name: ALTC_CITY_WISE_ANALYSIS
+      description: "A dbt model that creates KPI aggregation VIEW to monitor Customer Demographics by city"
+      columns:
+          - name: CUSTOMERID
+            description: "The primary key for this table"
+                       
