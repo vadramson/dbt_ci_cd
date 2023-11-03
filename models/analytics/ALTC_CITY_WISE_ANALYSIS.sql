@@ -11,7 +11,7 @@ WITH city_wise_customer_demographics_pdt_data AS (
     SELECT 
         CITY,
         COUNT(CUSTOMERID) AS Total_Customers,
-        SUM(QTY_PDT_BOUGHT) AS Total_Quantity_Bought,
+        SUM(QTY_PDT_BOUGHT) AS Total_Quantity_Bought, -- Sum/Adds all the qu 
         SUM(VOLUME_PDT_BOUGHT) AS Total_Volume_Bought
     FROM 
         {{ ref("ALTC_CUSTOMER_DEMOGRAPHIC_PRODUCTS") }} 
