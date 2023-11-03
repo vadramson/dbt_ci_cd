@@ -1,6 +1,6 @@
 {{ 
     config(
-        materialized='incremental',
+        materialized='view',
         unique_key='CUSTOMERID' 
     ) 
 }} -- Use table if you want to create a new table and increment if you want to append
@@ -9,7 +9,7 @@
 
 WITH customer_demographics_data AS (
     SELECT 
-        c.CustomerID,
+        c.CUSTOMERID,
         c.Name AS CustomerName,
         ci.Name AS City,
         co.Name AS Country
@@ -18,7 +18,8 @@ WITH customer_demographics_data AS (
     JOIN {{ref("INCR_CITY")}} ci ON c.CityID = ci.CityID
     JOIN {{ref("INCR_COUNTRY")}} co ON c.CountryID = co.CountryID
     GROUP BY ALL          
+    ORDER BY c.CUSTOMERID
 )
 
-SELECT * FROM customer_demographics_data
+SELECT DISTINCT cd.* FROM customer_demographics_data cd
                                                                                                                     
