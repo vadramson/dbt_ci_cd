@@ -1,0 +1,33 @@
+name: Merge to Main Workflow
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  merge-to-main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Merge dev to test
+      run: |
+        git checkout test
+        git pull origin test
+        git merge origin/dev
+        git push origin test
+
+    - name: Install Poetry using pip
+      run: |
+        pip install poetry
+
+    - name: Create Pull Request to Main
+      uses: peter-evans/create-pull-request@v3
+      with:
+        branch: test
+        commit-message: "Merge dev into main"
+        title: "Merge dev into main"
+        body: "Automatically generated pull request from GitHub Actions."
