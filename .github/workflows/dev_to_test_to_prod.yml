@@ -8,7 +8,7 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -51,6 +51,15 @@ jobs:
           git pull origin test
           git merge origin/dev
           git push origin test
+      
+      # Runs a set of commands using the runners shell
+      - name: Create Pull Request to Main
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: test
+          commit-message: "Merge test into main"
+          title: "Merge test into main"
+          body: "Automatically generated pull request from GitHub Actions."
       
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
