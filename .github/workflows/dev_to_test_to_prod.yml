@@ -44,14 +44,16 @@ jobs:
       - name: Install poetry
         run: pip3 install poetry 
 
-      # Runs a set of commands using the runners shell
-      - name: Merge dev to test
-        run: |
-          git checkout test
-          git pull origin test
-          git merge origin/dev
-          git push origin test
       
+      # Runs a set of commands to create requests using the runners shell
+      - name: Install gh CLI
+        run: |
+          sudo apt-get install gh  # Adjust for other platforms
+
+      - name: Create Pull Request to Main
+        run: |
+          gh pr create --base main --head test --title "Merge dev into main" --body "Automatically generated pull request from GitHub Actions."
+
       # Runs a set of commands using the runners shell
       - name: Create Pull Request to Main
         uses: peter-evans/create-pull-request@v3
