@@ -30,6 +30,10 @@ jobs:
         run: echo Hello, world!
 
       # Runs a single command using the runners shell
+      - name: list git branches
+        run: git branch -a
+
+      # Runs a single command using the runners shell
       - name: Install poetry
         run: pip3 install poetry 
 
