@@ -1,2 +1,2 @@
 # vad dbt 
-DBT_STARTER
+DBT_STARTER all good
