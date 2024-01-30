@@ -2,8 +2,7 @@ name: Merge to Main Workflow
 
 on:
   push:
-    branches:
-      - dev
+    branches:["dev"]
 
 jobs:
   merge-to-main:
