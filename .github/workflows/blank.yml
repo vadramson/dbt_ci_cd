@@ -37,6 +37,8 @@ jobs:
         run: |
           git fetch --all
           git branch -a
+          git config --global user.email "vadramson@gmail.com"
+          git config --global user.name "vadramson"
 
       # Runs a single command using the runners shell
       - name: Install poetry
