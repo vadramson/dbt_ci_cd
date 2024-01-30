@@ -1,2 +1,2 @@
-# vad dbt CI/CD
+# vad dbt 
 DBT_STARTER
