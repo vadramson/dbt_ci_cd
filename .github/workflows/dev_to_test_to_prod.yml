@@ -57,6 +57,12 @@ jobs:
         run: |
           sudo apt-get install gh  # Adjust for other platforms
 
+      
+      # Runs a command to setup token 
+      - name: Set up GH_TOKEN
+        run: echo "env:\n  GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}" > $GITHUB_ENV
+    
+
       # Runs a command to create a pull requests to merge Test to main using the runners shell
       - name: Create Pull Request to Main
         run: |
