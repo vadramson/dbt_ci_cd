@@ -8,7 +8,7 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,20 +23,35 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout code
       - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0  # Fetch all history for proper Git operations
 
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a single command using the runners shell
+      - name: Fetch and list all git branches
+        run: |
+          git fetch --all
+          git branch -a
+          git config --global user.email "vadramson@gmail.com"
+          git config --global user.name "vadramson"
+
+      # Runs a single command using the runners shell
+      - name: Install poetry
+        run: pip3 install poetry 
+
+      # Runs a set of commands using the runners shell
       - name: Merge dev to test
         run: |
           git checkout test
           git pull origin test
           git merge origin/dev
           git push origin test
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
+      
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
