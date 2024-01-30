@@ -1,32 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
 name: Merge to Main Workflow
 
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches:["dev"]
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "main" ]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  merge-to-main:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout code
+      - uses: actions/checkout@v3
 
-    - name: Merge dev to test
-      run: |
-        git checkout test
-        git pull origin test
-        git merge origin/dev
-        git push origin test
+      - name: Merge dev to test
+        run: |
+          git checkout test
+          git pull origin test
+          git merge origin/dev
+          git push origin test
 
-    - name: Install Poetry using pip
-      run: |
-        pip install poetry
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
 
-    - name: Create Pull Request to Main
-      uses: peter-evans/create-pull-request@v3
-      with:
-        branch: test
-        commit-message: "Merge dev into main"
-        title: "Merge dev into main"
-        body: "Automatically generated pull request from GitHub Actions."
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
