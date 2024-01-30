@@ -1,2 +1,4 @@
-# vad_dbt
-DBT_STARTER
+# vad dbt CI/CD
+DBT CI/CD STARTER project.
+
+Integrating dev, test, and main branches.
