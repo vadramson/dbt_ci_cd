@@ -60,8 +60,10 @@ jobs:
       
       # Runs a command to setup token 
       - name: Set up GH_TOKEN
-        run: echo "env:\n  GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}" > $GITHUB_ENV
-    
+        run: : |
+          echo "env:" >> $GITHUB_ENV
+          echo "  GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+          
 
       # Runs a command to create a pull requests to merge Test to main using the runners shell
       - name: Create Pull Request to Main
